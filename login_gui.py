@@ -6,7 +6,8 @@ from mysql.connector import Error
 import bcrypt
 import os
 
-from library_gui import LibrarySystem
+from library_gui_admin import LibrarySystem
+from library_gui_members import Library_System
 
 
 # Create database connection
@@ -63,13 +64,12 @@ def clear_remembered_username():
         os.remove("remember_me.txt")
 
 
-# Login functionality
 def login():
     username = username_entry.get()
     password = password_entry.get()
     remember_me = remember_me_var.get()
 
-    if username == "" or password == "":
+    if not username or not password:
         messagebox.showerror("Error", "All fields are required!")
         return
 
@@ -84,10 +84,16 @@ def login():
         messagebox.showinfo(
             "Success", f"Welcome {role.capitalize()}! Login successful."
         )
-
         root.destroy()
-        library_system = LibrarySystem(role, username)
-        library_system.run()
+
+        # Initialize and run LibrarySystem based on role
+        if role in ["member", "staff"]:
+            library_system = Library_System(role, username)
+            library_system.run()
+        else:
+            library_system = LibrarySystem(role, username)
+            library_system.run()
+
     else:
         messagebox.showerror("Error", "Invalid username or password!")
 
