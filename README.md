@@ -15,9 +15,8 @@ This **Library Management System** is a comprehensive solution built with Python
 - [Database Schema](#database-schema)
 - [Configuration](#configuration)
 - [Usage](#usage)
-- [Troubleshooting](#troubleshooting)
-- [Contributing](#contributing)
-- [License](#license)
+
+
 
 ## Features
 
@@ -211,11 +210,6 @@ The system supports three user roles:
 2. Set and track due dates
 3. Process returns
 4. Calculate and manage fines
-
-
-
-## Contributing
-Pull requests are welcome. For major changes, please open an issue first to discuss proposed changes.
 
 
 ## Contributors
